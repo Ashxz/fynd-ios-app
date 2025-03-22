@@ -1,25 +1,25 @@
 workflows:
   ios-pwa-build:
-    name: iOS Development Build
+    name: fynd. iOS
     environment:
       groups:
-        - ios_credentials
+        - ios_credentials  # Set this up in Codemagic UI with your certs
       ios_signing:
         distribution_type: development
         bundle_identifier: si.fynd.app
-        provisioning_profiles:
-          - si.fynd.app
-      vars:
-        XCODE_PROJECT: "fynd..xcodeproj"
-        XCODE_SCHEME: "fynd."
     scripts:
-      - name: Install dependencies (if applicable)
+      - name: Install CocoaPods dependencies (if needed)
         script: |
-          if [ -f "Podfile" ]; then pod install; fi
-      - name: Build IPA
+          if [ -f "Podfile" ]; then
+            pod install
+          fi
+      - name: Build the project
         script: |
           xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+            --project "fynd..xcodeproj" \
+            --scheme "fynd." \
+            --archive-path build/fynd..xcarchive \
+            --export-options-plist ExportOptions.plist
     artifacts:
       - build/*.ipa
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
