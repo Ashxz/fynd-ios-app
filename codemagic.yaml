@@ -6,7 +6,9 @@ workflows:
         - ios_credentials  # Set this up in Codemagic UI with your certs
       ios_signing:
         distribution_type: development
-        bundle_identifier: si.fynd.app  # Your app bundle ID
+        bundle_identifier: si.fynd.app
+        provisioning_profiles:
+          - si.fynd.app
     scripts:
       - name: Install CocoaPods dependencies (if needed)
         script: |
