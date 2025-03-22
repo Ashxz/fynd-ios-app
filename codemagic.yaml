@@ -3,7 +3,7 @@ workflows:
     name: fynd. iOS
     environment:
       groups:
-        - appstore_credentials  # Set this up in Codemagic UI with your certs
+        - ios_credentials  # Set this up in Codemagic UI with your certs
       ios_signing:
         distribution_type: app_store
         bundle_identifier: si.fynd.app  # Your app bundle ID
