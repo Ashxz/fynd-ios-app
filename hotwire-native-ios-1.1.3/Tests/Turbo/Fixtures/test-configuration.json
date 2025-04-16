@@ -1,0 +1,28 @@
+{
+  "settings": {
+    "server": "beta",
+    "some-feature-enabled": true
+  },
+  "rules": [
+    {
+      "patterns": ["/$"],
+      "properties": {"page": "root"}
+    },
+    {
+      "patterns": ["/new$", "/edit$"],
+      "properties": {"context": "modal"}
+    },
+    {
+      "patterns": ["/new$"],
+      "properties": {"background_color": "black"}
+    },
+    {
+      "patterns": ["/edit$"],
+      "properties": {"background_color": "white"}
+    },
+    {
+      "patterns": [".*\\?.*open_in_external_browser=true.*"],
+      "properties": {"open_in_external_browser": true}
+    }
+  ]
+}
